@@ -1,0 +1,50 @@
+
+CREATE TABLE passenger(
+  id int PRIMARY KEY,
+  first_name VARCHAR(255),
+  last_name  VARCHAR(255),
+  phone VARCHAR(50),
+  is_deleted BOOLEAN
+);
+
+CREATE TABLE car(
+  id int PRIMARY KEY,
+  brand VARCHAR(100),
+  mode  VARCHAR(100),
+  state_number VARCHAR(50),
+  is_deleted BOOLEAN
+);
+
+CREATE TABLE driver(
+  id int PRIMARY KEY,
+  first_name VARCHAR(255),
+  last_name  VARCHAR(255),
+  driving_experieance int,
+  age int,
+  car_id int REFERENCES car (id),
+  is_deleted BOOLEAN
+);
+
+CREATE TABLE trip(
+  id int PRIMARY KEY,
+  source_address VARCHAR(255),
+  dest_address VARCHAR(255),
+  driver_id int REFERENCES driver (id),
+  passenger_id int REFERENCES passenger (id),
+  is_deleted BOOLEAN
+);
+
+
+CREATE SEQUENCE car_id_sequence;
+ALTER SEQUENCE car_id_sequence OWNED BY car.id;
+
+CREATE SEQUENCE driver_id_sequence;
+ALTER SEQUENCE driver_id_sequence OWNED BY driver.id;
+
+CREATE SEQUENCE passenger_id_sequence;
+ALTER SEQUENCE passenger_id_sequence OWNED BY passenger.id;
+
+CREATE SEQUENCE trip_id_sequence;
+ALTER SEQUENCE trip_id_sequence OWNED BY trip.id;
+
+
