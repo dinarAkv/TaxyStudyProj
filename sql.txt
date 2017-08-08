@@ -10,7 +10,7 @@ CREATE TABLE passenger(
 CREATE TABLE car(
   id int PRIMARY KEY,
   brand VARCHAR(100),
-  mode  VARCHAR(100),
+  model  VARCHAR(100),
   state_number VARCHAR(50),
   is_deleted BOOLEAN
 );
@@ -46,5 +46,17 @@ ALTER SEQUENCE passenger_id_sequence OWNED BY passenger.id;
 
 CREATE SEQUENCE trip_id_sequence;
 ALTER SEQUENCE trip_id_sequence OWNED BY trip.id;
+
+
+
+
+INSERT INTO car (brand, model, state_number, is_deleted)
+VALUES ('nissan', 'tiida', 'e213hm', FALSE );
+
+INSERT INTO car (brand, model, state_number, is_deleted)
+VALUES ('kia', 'rio', 'g427xd', FALSE );
+
+INSERT INTO car (brand, model, state_number, is_deleted)
+VALUES ('skoda', 'octavia', 't753op', FALSE );
 
 
